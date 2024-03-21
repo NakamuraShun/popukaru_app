@@ -1,0 +1,39 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  lead: MyText
+  content: MyText
+  mv_path: MyText
+  meta_title: MyString
+  meta_keyword: MyString
+  meta_description: MyString
+  category: one
+  editor: one
+  status: 1
+  public_date: 2024-03-21 23:00:48
+  public_datetime: 2024-03-21 23:00:48
+  private_datetime: 2024-03-21 23:00:48
+  slider_flg: false
+  slider_order: 1
+  pickup_flg: false
+  pickup_order: 1
+
+two:
+  title: MyText
+  lead: MyText
+  content: MyText
+  mv_path: MyText
+  meta_title: MyString
+  meta_keyword: MyString
+  meta_description: MyString
+  category: two
+  editor: two
+  status: 1
+  public_date: 2024-03-21 23:00:48
+  public_datetime: 2024-03-21 23:00:48
+  private_datetime: 2024-03-21 23:00:48
+  slider_flg: false
+  slider_order: 1
+  pickup_flg: false
+  pickup_order: 1
