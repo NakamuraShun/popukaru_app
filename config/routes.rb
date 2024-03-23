@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root 'home#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+	scope module: 'front' do
+		root 'home#index'
+		get "/about",    to: "pages#about"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+		resources :articles, only: [:index, :show]
+	end
+
 end
