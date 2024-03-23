@@ -1,2 +1,47 @@
 <h1>Admin::Articles#new</h1>
 <p>Find me in app/views/admin/articles/new.html.erb</p>
+
+<%= form_with(model: [:admin, @Article], local: true) do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<br>
+
+	<%= f.label :lead %>
+	<%= f.text_field :lead %>
+	<br>
+	
+	<%= f.label :content %>
+	<%= f.text_field :content %>
+	<br>
+	
+	# 画像アップ
+	<%= f.label :mv_path %>
+	<%= f.text_field :mv_path %>
+	<br>
+	
+	<%= f.label :meta_title %>
+	<%= f.text_field :meta_title %>
+	<br>
+
+	<%= f.label :meta_keyword %>
+	<%= f.text_field :meta_keyword %>
+	<br>
+
+	<%= f.label :meta_description %>
+	<%= f.text_field :meta_description %>
+	<br>
+
+	<%= f.label :category_id %>
+	<%= f.collection_select :category_id, Category.all, :id, :label, include_blank: "カテゴリを選択して下さい" %>
+	<br>
+
+	<%= f.label :editor_id %>
+	<%= f.collection_select :editor_id, Editor.all, :id, :first_name, include_blank: "編集者を選択して下さい" %>
+	<br>
+
+	<%= f.label :status %>
+	<%= f.select :status, Article::status_options, include_blank: "状態を選択して下さい" %>
+	<br>
+	
+	<%= f.submit "Save changes", class: "btn btn-primary" %>
+<% end %>
