@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_23_055947) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_23_222302) do
   create_table "article_tag_relations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.bigint "tag_id", null: false

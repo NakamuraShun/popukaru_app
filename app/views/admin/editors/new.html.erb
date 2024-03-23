@@ -1,2 +1,47 @@
 <h1>Admin::Editors#new</h1>
 <p>Find me in app/views/admin/editors/new.html.erb</p>
+
+<%= form_with(model: [:admin, @Editor], local: true) do |f| %>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+	<br>
+
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+	<br>
+
+	<%= f.label :first_name_ruby %>
+	<%= f.text_field :first_name_ruby %>
+	<br>
+
+	<%= f.label :last_name_ruby %>
+	<%= f.text_field :last_name_ruby %>
+	<br>
+
+	<%= f.label :birthday %>
+	<%= f.date_field :birthday %>
+	<br>
+
+	# 画像アップ
+	<%= f.label :thumb_path %>
+	<%= f.text_field :thumb_path %>
+	<br>
+
+	<%= f.label :organization %>
+	<%= f.text_field :organization %>
+	<br>
+
+	<%= f.label :position %>
+	<%= f.text_field :position %>
+	<br>
+
+	<%= f.label :lead %>
+	<%= f.text_field :lead %>
+	<br>
+
+	<%= f.label :introduction %>
+	<%= f.text_area :introduction %>
+	<br>
+	
+	<%= f.submit "Save changes", class: "btn btn-primary" %>
+<% end %>
