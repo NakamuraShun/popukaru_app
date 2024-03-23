@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_23_041234) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_23_055947) do
   create_table "article_tag_relations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.bigint "tag_id", null: false
@@ -49,6 +49,21 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_23_041234) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_ruby", null: false
+    t.string "last_name_ruby", null: false
+    t.string "organization", null: false
+    t.string "position", null: false
+    t.string "email", null: false
+    t.integer "tel", limit: 1, null: false
+    t.string "title", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "editors", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -60,6 +75,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_23_041234) do
     t.string "position", null: false
     t.string "lead", null: false
     t.text "introduction", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "notices", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "content", null: false
+    t.text "figure_path", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
