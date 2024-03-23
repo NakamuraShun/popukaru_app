@@ -18,5 +18,11 @@ module PopukaruApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+	config.generators do |g|
+      g.helper false #helperの自動生成をoff
+      g.assets false #cssの自動生成をoff
+	end
+
   end
 end
