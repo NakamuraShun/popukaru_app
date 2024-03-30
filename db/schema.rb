@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_23_222302) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_30_055953) do
   create_table "article_tag_relations", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.bigint "article_id", null: false
     t.bigint "tag_id", null: false
@@ -33,10 +33,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_23_222302) do
     t.integer "status", limit: 1, null: false
     t.datetime "public_datetime"
     t.datetime "private_datetime"
-    t.boolean "slider_flg", null: false
-    t.integer "slider_order", limit: 1, null: false
-    t.boolean "pickup_flg", null: false
-    t.integer "pickup_order", limit: 1, null: false
+    t.integer "slider_order", limit: 1, default: 0, null: false
+    t.integer "pickup_order", limit: 1, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_articles_on_category_id"

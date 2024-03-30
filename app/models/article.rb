@@ -19,10 +19,8 @@ class Article < ApplicationRecord
 	validates :category_id,        presence: true, numericality: { only_integer: true }
 	validates :editor_id,          presence: true, numericality: { only_integer: true }
 	validates :status,             presence: true, numericality: { only_integer: true }
-	# validates :slider_flg,         presence: true, numericality: { only_integer: true }
-	# validates :slider_order,       presence: true, numericality: { only_integer: true }
-	# validates :pickup_flg,         presence: true, numericality: { only_integer: true }
-	# validates :pickup_order,       presence: true, numericality: { only_integer: true }
+	validates :slider_order,       presence: false, numericality: { only_integer: true }
+	validates :pickup_order,       presence: false, numericality: { only_integer: true }
 
 	validate :validate_check_public_datetime,  if: :public_datetime
 	validate :validate_check_private_datetime, if: :private_datetime
@@ -30,14 +28,14 @@ class Article < ApplicationRecord
 	private
 
 	def validate_check_public_datetime
-		errors.add(:public_datetime, "は現在の日時より後の日時にしてください") unless public_datetime < Time.now
+		errors.add(:public_datetime, "は現在の日時より後の日時にしてください") unless  Time.now < public_datetime
 	end
 
 	def validate_check_private_datetime
 		if public_datetime
 			errors.add(:private_datetime, "は非公開日時は公開日時より後の日時にしてください") unless public_datetime < private_datetime
 		else
-			errors.add(:private_datetime, "は現在の日時より後の日時にしてください") unless private_datetime < Time.now
+			errors.add(:private_datetime, "は現在の日時より後の日時にしてください") unless Time.now < private_datetime
 		end
 	end
 
