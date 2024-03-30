@@ -1,0 +1,5 @@
+<li>
+	<%= article.title %>
+	<%= link_to "削除", [:admin, article], data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'} %> 
+</li>
+

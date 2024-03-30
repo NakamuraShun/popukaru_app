@@ -4,6 +4,11 @@ class Article < ApplicationRecord
   has_many :article_tag_relations
   has_many :tags, through: :article_tag_relations
 
+	# 公開状態
+	STATUS__PUBLIC  = 1 # 公開
+	STATUS__PRIVAYE = 2 # 非公開
+	STATUS__DRAFT   = 3 # 下書き
+
 	validates :title,              presence: true, length: { maximum: 50 }
 	validates :lead,               presence: true, length: { maximum: 500 }
 	validates :content,            presence: true
@@ -14,26 +19,13 @@ class Article < ApplicationRecord
 	validates :category_id,        presence: true, numericality: { only_integer: true }
 	validates :editor_id,          presence: true, numericality: { only_integer: true }
 	validates :status,             presence: true, numericality: { only_integer: true }
-	validates :slider_flg,         presence: true, numericality: { only_integer: true }
-	validates :slider_order,       presence: true, numericality: { only_integer: true }
-	validates :pickup_flg,         presence: true, numericality: { only_integer: true }
-	validates :pickup_order,       presence: true, numericality: { only_integer: true }
+	# validates :slider_flg,         presence: true, numericality: { only_integer: true }
+	# validates :slider_order,       presence: true, numericality: { only_integer: true }
+	# validates :pickup_flg,         presence: true, numericality: { only_integer: true }
+	# validates :pickup_order,       presence: true, numericality: { only_integer: true }
 
 	validate :validate_check_public_datetime,  if: :public_datetime
 	validate :validate_check_private_datetime, if: :private_datetime
-
-	# 公開状態
-	STATUS__PUBLIC  = 1 # 公開
-	STATUS__PRIVAYE = 2 # 非公開
-	STATUS__DRAFT   = 3 # 下書き
-
-	def self.status_options
-		[
-			['公開', STATUS__PUBLIC],
-			['非公開', STATUS__PRIVAYE],
-			['下書き', STATUS__DRAFT],
-		]
-	end
 
 	private
 

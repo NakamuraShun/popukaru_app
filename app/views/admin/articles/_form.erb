@@ -1,0 +1,72 @@
+<% article_form # @param [ArticleForm] article_form %>
+<%= form_with(model: article_form, url: article_form.persisted? ? admin_article_path(article_form) : admin_articles_path) do |form| %>
+  <% if article_form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(article_form.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article_form.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  # articles
+  <%= form.fields_for(:article_attributes, article_form.article) do |article_fields| %>
+	<%= article_fields.label :editor_id %>
+	<%= article_fields.collection_select :editor_id, Editor.all, :id, :first_name, required: true %>
+	<br>
+
+	<%= article_fields.label :status %>
+	<%= article_fields.select :status, Forms::Admin::ArticleForm.status_options, required: true %>
+	<br>
+
+	<%= article_fields.label :category_id %>
+	<%= article_fields.collection_select :category_id, Category.all, :id, :label, required: true %>
+	<br>
+
+	<%= article_fields.label :public_datetime %>
+	<%= article_fields.datetime_field :public_datetime %>
+	<br>
+
+	<%= article_fields.label :private_datetime %>
+	<%= article_fields.datetime_field :private_datetime %>
+	<br>
+
+	<%= article_fields.label :meta_title %>
+	<%= article_fields.text_field :meta_title, required: true %>
+	<br>
+
+	<%= article_fields.label :meta_keyword %>
+	<%= article_fields.text_field :meta_keyword, required: true %>
+	<br>
+
+	<%= article_fields.label :meta_description %>
+	<%= article_fields.text_field :meta_description %>
+	<br>
+
+	# 画像アップ
+	<%= article_fields.label :mv_path %>
+	<%= article_fields.text_field :mv_path, required: true %>
+	<br>
+
+	<%= article_fields.label :title %>
+	<%= article_fields.text_field :title, required: true %>
+	<br>
+
+	<%= article_fields.label :lead %>
+	<%= article_fields.text_area :lead %>
+	<br>
+	
+	<%= article_fields.label :content %>
+	<%= article_fields.text_area :content %>
+	<br>
+  <% end %>
+
+  <hr>
+
+	<%= form.submit "Save changes" %>
+<% end %>
+
+	<%= @time %>
