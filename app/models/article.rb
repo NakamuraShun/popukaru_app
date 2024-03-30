@@ -1,8 +1,8 @@
 class Article < ApplicationRecord
-  belongs_to :category
-  belongs_to :editor
-  has_many :article_tag_relations
-  has_many :tags, through: :article_tag_relations
+	belongs_to :category
+	belongs_to :editor
+	has_many :article_tag_relations
+	has_many :tags, through: :article_tag_relations
 
 	# 公開状態
 	STATUS__PUBLIC  = 1 # 公開
