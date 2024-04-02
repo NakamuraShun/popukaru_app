@@ -15,7 +15,7 @@ class Admin::ArticlesController < ApplicationController
 	end
 
 	def create
-		@Form = Forms::Admin::ArticleForm.new(attributes: form_params)
+		@Form = Forms::Admin::ArticleForm.new(attributes: article_form_params)
 		if @Form.save
 			redirect_to admin_articles_path, notice: "User was successfully created."
 		else
@@ -24,7 +24,7 @@ class Admin::ArticlesController < ApplicationController
 	end
 
 	def update
-		@Form = Forms::Admin::ArticleForm.new(attributes: form_params, article: @target_article)
+		@Form = Forms::Admin::ArticleForm.new(attributes: article_form_params, article: @target_article)
 		if @Form.save
 			redirect_to admin_articles_path, notice: "User was successfully created."
 		else
@@ -39,11 +39,12 @@ class Admin::ArticlesController < ApplicationController
 
 	private
 
-	def form_params
+	def article_form_params
 		params.require(:forms_admin_article_form).permit(article_attributes: [
 																	:title,
 																	:lead,
 																	:content,
+																	:status,
 																	:mv_path,
 																	:meta_title,
 																	:meta_keyword,
@@ -52,7 +53,7 @@ class Admin::ArticlesController < ApplicationController
 																	:private_datetime,
 																	:category_id,
 																	:editor_id,
-																	:status]
+																	tag_ids: []]
 																)
 	end
 

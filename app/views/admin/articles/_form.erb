@@ -62,6 +62,12 @@
 	<%= article_fields.label :content %>
 	<%= article_fields.text_area :content %>
 	<br>
+
+	# tags
+	<%= article_fields.collection_check_boxes :tag_ids, Tag.all, :id, :label, include_hidden: false do |b| %>
+		<%= b.check_box %>
+		<%= b.label %>
+	<% end %>
   <% end %>
 
   <hr>

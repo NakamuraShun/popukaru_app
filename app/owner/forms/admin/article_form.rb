@@ -1,13 +1,12 @@
 class Forms::Admin::ArticleForm < Forms::FormBase
 
-	attr_accessor :article, :tag
+	attr_accessor :article
 
 	delegate :id, :persisted?, to: :article
 
 	# 対象のモデルと属性を定義 
-	def initialize(attributes: nil, article: nil, tag: nil)
+	def initialize(attributes: nil, article: nil)
 		@article = article || Article.new
-		@tag = tag || Tag.new
 		super(attributes: attributes)
 	end
 
@@ -58,18 +57,5 @@ class Forms::Admin::ArticleForm < Forms::FormBase
 			['下書き', Article::STATUS__DRAFT],
 		]
 	end
-
-	# def save
-	# 	return if invalid?
-
-	# 	# tag_ids = params[:article][:tag_ids]
-	#     # tag_ids.shift
-	# 	# tag_ids.each do |tag_id|
-	# 	# 	tag = Tag.find(tag_id.to_i)
-	# 	# 	@article.tags << tag #関連付ける
-	# 	# end
-
-	# end
-
 
 end
