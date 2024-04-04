@@ -22,5 +22,8 @@ COPY Gemfile.lock /popukaru_app/Gemfile.lock
 RUN gem update --system ${RUBYGEMS_VERSION} && \
     bundle install
 
+# ruby-vipsを使用するためlibvips42をインストール
+RUN apt-get update -qq && apt-get install -y --no-install-recommends nodejs postgresql-client libvips42
+
 # ローカルのpopukaru_app配下のファイルをコンテナ内のpopukaru_app配下にコピー
 COPY . /popukaru_app
