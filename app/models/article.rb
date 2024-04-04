@@ -4,6 +4,8 @@ class Article < ApplicationRecord
 	has_many :article_tag_relations
 	has_many :tags, through: :article_tag_relations
 
+	has_one_attached :mv_image
+
 	# 公開状態
 	STATUS__PUBLIC  = 1 # 公開
 	STATUS__PRIVAYE = 2 # 非公開

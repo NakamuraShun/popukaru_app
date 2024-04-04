@@ -53,6 +53,7 @@ class Admin::ArticlesController < ApplicationController
 																	:private_datetime,
 																	:category_id,
 																	:editor_id,
+																	:mv_image,
 																	tag_ids: []]
 																)
 	end
