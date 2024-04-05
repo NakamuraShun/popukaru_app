@@ -4,7 +4,9 @@ class Article < ApplicationRecord
 	has_many :article_tag_relations
 	has_many :tags, through: :article_tag_relations
 
-	has_one_attached :mv_image
+	has_one_attached :mv_image do |attachable|
+		attachable.variant :thumb, resize_to_limit: [200, 200]
+	end
 
 	# 公開状態
 	STATUS__PUBLIC  = 1 # 公開
