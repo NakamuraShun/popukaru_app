@@ -49,10 +49,7 @@
 	# 画像アップ
 	<%= article_fields.file_field :mv_image, accept: "image/jpeg,image/gif,image/png" %>
 	<br>
-	<% if article_form.article.mv_image.attached? %>
-		画像が保存済みの場合(variantで加工)<br>
-		<%= image_tag article_form.article.mv_image.variant(:thumb) %>
-	<% end %>
+	<%= image_tag article_form.article.mv_image_thumb_path %>
 	<br>
 
 	<%= article_fields.label :title %>

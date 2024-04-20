@@ -13,6 +13,8 @@ class Article < ApplicationRecord
 	STATUS__PRIVAYE = 2 # 非公開
 	STATUS__DRAFT   = 3 # 下書き
 
+	IMAGE_PATH_DEFAULT_MV_IMAGE = 'default/default_article_mv_image.jpg'
+
 	validates :title,              presence: true, length: { maximum: 50 }
 	validates :lead,               presence: true, length: { maximum: 500 }
 	validates :content,            presence: true
@@ -28,6 +30,16 @@ class Article < ApplicationRecord
 
 	validate :validate_check_public_datetime,  if: :public_datetime
 	validate :validate_check_private_datetime, if: :private_datetime
+
+	# MV画像
+	def mv_image_path
+		mv_image.attached? ? mv_image : IMAGE_PATH_DEFAULT_MV_IMAGE
+	end
+
+	# MV画像 (サムネ用)
+	def mv_image_thumb_path
+		mv_image.attached? ? mv_image.variant(:thumb) : IMAGE_PATH_DEFAULT_MV_IMAGE
+	end
 
 	private
 
