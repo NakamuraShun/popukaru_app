@@ -46,8 +46,13 @@
 	<%= article_fields.text_field :meta_description %>
 	<br>
 
-	# 画像アップ
+	MV画像アップ<br>
 	<%= article_fields.file_field :mv_image, accept: "image/jpeg,image/gif,image/png" %>
+	<% if article_form.article.mv_image.attached? %>
+		<br>
+		<%= article_fields.label :mv_image_delete_flg %>
+		<%= article_fields.check_box :mv_image_delete_flg, { multiple: false }, checked_value = "1", unchecked_value = "0" %>
+	<% end %>
 	<br>
 	<%= image_tag article_form.article.mv_image_thumb_path %>
 	<br>

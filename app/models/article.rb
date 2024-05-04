@@ -8,6 +8,8 @@ class Article < ApplicationRecord
 		attachable.variant :thumb, resize_to_limit: [200, 200]
 	end
 
+	attr_accessor :mv_image_delete_flg
+
 	# 公開状態
 	STATUS__PUBLIC  = 1 # 公開
 	STATUS__PRIVAYE = 2 # 非公開

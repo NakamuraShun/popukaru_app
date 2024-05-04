@@ -54,6 +54,7 @@ class Admin::ArticlesController < ApplicationController
 																	:category_id,
 																	:editor_id,
 																	:mv_image,
+																	:mv_image_delete_flg,
 																	tag_ids: []]
 																)
 	end

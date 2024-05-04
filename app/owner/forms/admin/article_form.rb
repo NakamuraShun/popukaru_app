@@ -30,6 +30,7 @@ class Forms::Admin::ArticleForm < Forms::FormBase
 
 		ActiveRecord::Base.transaction do
 			article.save!
+			article.mv_image.purge if delete_mv_image?
 		end
 
 		true
@@ -47,6 +48,9 @@ class Forms::Admin::ArticleForm < Forms::FormBase
 	end
 
 
+	def delete_mv_image?
+		article.mv_image_delete_flg == '1'
+	end
 
 
 
