@@ -17,7 +17,7 @@ class Admin::ArticlesController < ApplicationController
 	def create
 		@Form = Forms::Admin::ArticleForm.new(attributes: article_form_params)
 		if @Form.save
-			redirect_to admin_articles_path, notice: "User was successfully created."
+			redirect_to admin_article_path(:id), notice: "User was successfully created."
 		else
 			render :new, status: :unprocessable_entity
 		end
@@ -26,7 +26,7 @@ class Admin::ArticlesController < ApplicationController
 	def update
 		@Form = Forms::Admin::ArticleForm.new(attributes: article_form_params, article: @target_article)
 		if @Form.save
-			redirect_to admin_articles_path, notice: "User was successfully created."
+			redirect_to admin_article_path(:id), notice: "User was successfully created."
 		else
 			render :edit, status: :unprocessable_entity
 		end
